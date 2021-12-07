@@ -14,7 +14,7 @@ const closeHour = 14;
 
 const numDay = NUM_DAY[weekday];
 const currentDay = new Date().getDay();
-const date = getDateCalendar(numDay, currentDay);
+const date = getDateCalendar(numDay, currentDay).setSeconds(0,0);
 
 const result = createEvent(weekday, week, openHour, closeHour);
 

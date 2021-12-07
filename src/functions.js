@@ -1,5 +1,5 @@
 
-export const NUM_DAY = { 'mon': 1, 'tue': 2, 'wed': 3, 'thu': 4, 'fri': 5, 'sat': 6, 'sun': 7 };
+const NUM_DAY = { 'mon': 1, 'tue': 2, 'wed': 3, 'thu': 4, 'fri': 5, 'sat': 6, 'sun': 7 };
 
 /**
  * Con esta función podemos crear eventos partículas segun sea el caso, 
@@ -12,7 +12,7 @@ export const NUM_DAY = { 'mon': 1, 'tue': 2, 'wed': 3, 'thu': 4, 'fri': 5, 'sat'
  * @param {int} openHour opciones (8,9,10,...,20,21,21,23,24)
  * @param {int} closeHour opciones (8,9,10,...,20,21,21,23,24)
  */
-export const createEvent = (weekday, week, openHour, closeHour) => {
+const createEvent = (weekday, week, openHour, closeHour) => {
 
     if ((closeHour - openHour) < 0) {
         throw new Error("Argumento ilegal en el horario de entrada.");
@@ -31,7 +31,6 @@ export const createEvent = (weekday, week, openHour, closeHour) => {
     const hour = new Date().getHours();
     const options = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
 
-
     function addDays(days) {
         return new Date(new Date().setDate(new Date().getDate() + days));
     }
@@ -43,7 +42,7 @@ export const createEvent = (weekday, week, openHour, closeHour) => {
         return addDays((numDay - currentDay) + 7 * (week - 1));
     }
 
-    const date = getDateCalendar(numDay, currentDay);
+    const date = getDateCalendar(numDay, currentDay).setSeconds(0,0);
 
     return {
         title: "[SOFKA U] Meeting Room",
@@ -53,3 +52,5 @@ export const createEvent = (weekday, week, openHour, closeHour) => {
         duration: [closeHour - openHour, "hour"]
     };
 }
+
+export {NUM_DAY, createEvent }
