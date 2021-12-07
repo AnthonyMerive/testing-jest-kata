@@ -58,9 +58,38 @@ test('Validation date', () => {
     expect(result.date).toEqual(start);
 });
 
+//estructura anterior debe ser describe no test
 
-test('Validation illegal arguments', () => {
-    //TODO: hacer las verificaciones
+// test('Validation illegal arguments', () => {
+//     //TODO: hacer las verificaciones
+// });
+
+describe('Validation illegal arguments', () => {
+
+    //primer argumento "ilegal" que el retorno de menor que cero
+    test('resultante de retorno menor que cero', () => {
+        const error = () => {
+            createEvent(weekday, week, 20, 10);
+        };
+        expect(error).toThrow(Error);
+    });
+
+    //segundo argumento "ilegal" que el week sea menor que cero
+    test('week menor que cero', () => {
+        const error = () => {
+            createEvent(weekday, -3, openHour, closeHour);
+        };
+        expect(error).toThrow(Error);
+    });
+
+    //tercer argumento "ilegal" que weekday sea string vacio
+    test('weekday vacio', () => {
+        const error = () => {
+            createEvent('', week, openHour, closeHour);
+        };
+        expect(error).toThrow(Error);
+    });
+
 });
 
 
