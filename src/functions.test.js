@@ -33,6 +33,8 @@ function getDateCalendar(numDay, currentDay) {
 
 //--------------------------------------------------------
 
+describe('all tests', ()=>{
+
 test('Validation a event title and content basic', () => {
 
     expect(result.title).toBe('[SOFKA U] Meeting Room');
@@ -92,7 +94,4 @@ describe('Validation illegal arguments', () => {
 
 });
 
-
-test('create an event list of at least 10 events', () => {
-    //TODO: hacer las verificaciones
-});
+})
